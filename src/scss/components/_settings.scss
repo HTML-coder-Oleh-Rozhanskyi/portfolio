@@ -1,20 +1,25 @@
-$canvas: 1440px;
-$container: 1110px;
+$canvas: 1920px;
+$container: 1052px;
 $paddingInline: 32px;
 
 :root {
-	--bg: #000;
-	--main-color: #fff;
-	--second-color: #899d9d;
-	--green-color: #bae249;
-	--hover-color: #91ac46;
-	--focus-color: #83a440;
-	--active-color: #688b05;
+	--bg-1: #292f36;
+	--bg-2: #1a1e23;
+	--brand-1: #12f7d6;
+	--brand-2: #98faec;
+	--grey: #43454d;
+	--white: #fff;
+	--html: #e54f26;
+	--css: #0c73b8;
+	--js: #e7a020;
+	--react: #28a9e0;
+	--white: #fff;
+	--black: #000;
 	--transition: 0.2s;
 	--transition-long: 0.4s;
 	--index: calc(1vw + 1vh);
-	--font: "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
-	--font-second: "Cormorant", "Helvetica Neue", Helvetica, sans-serif;
+	--font-family: "Ubuntu", sans-serif;
+	--second-family: "IBM Plex Mono", sans-serif;
 }
 
 @mixin xsm {
@@ -113,13 +118,13 @@ html {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-family: var(--font);
+	font-family: var(--second-family);
 	font-size: 16px;
 	// font-size: calc(var(--index) * 1.5);
 	font-weight: 400;
-	line-height: 1.5;
-	color: var(--main-color);
-	background-color: var(--bg);
+	line-height: 1.25;
+	color: var(--white);
+	background-color: var(--bg-1);
 	&.menu-active {
 		overflow-y: hidden;
 		padding-right: 10px;
