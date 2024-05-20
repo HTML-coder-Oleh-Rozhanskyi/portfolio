@@ -1,0 +1,161 @@
+$canvas: 1440px;
+$container: 1110px;
+$paddingInline: 32px;
+
+:root {
+	--bg: #000;
+	--main-color: #fff;
+	--second-color: #899d9d;
+	--green-color: #bae249;
+	--hover-color: #91ac46;
+	--focus-color: #83a440;
+	--active-color: #688b05;
+	--transition: 0.2s;
+	--transition-long: 0.4s;
+	--index: calc(1vw + 1vh);
+	--font: "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
+	--font-second: "Cormorant", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+@mixin xsm {
+	@media (max-width: 424.98px) {
+		@content;
+	}
+}
+@mixin sm {
+	@media (max-width: 574.98px) {
+		@content;
+	}
+}
+@mixin m {
+	@media (max-width: 767.98px) {
+		@content;
+	}
+}
+@mixin t {
+	@media (max-width: 1023.98px) {
+		@content;
+	}
+}
+@mixin d {
+	@media (max-width: $container) {
+		@content;
+	}
+}
+@mixin focus {
+	@content;
+	&:focus-visible {
+		color: #1d2f30;
+	}
+}
+@mixin active {
+	@content;
+	&:active {
+		color: #1d2f30;
+	}
+}
+@mixin hover {
+	@content;
+	&:hover {
+		@media (any-hover) {
+		}
+	}
+}
+@mixin container {
+	@content;
+	max-width: calc($container + $paddingInline * 2);
+	margin: 0 auto;
+	padding-inline: $paddingInline;
+}
+
+/*
+@mixin hover {
+	&::before {
+		@content;
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		background-color: var(--main-color);
+		transform: scale(0);
+		transition: transform var(--transition);
+	}
+	&:hover::before {
+		@media (any-hover) {
+			transform: scale(1);
+		}
+	}
+}
+*/
+
+@function vwc($n) {
+	@return calc($n / $canvas * 100vw);
+}
+@function vw($n) {
+	@return calc($n / $container * 100vw);
+}
+@function vwt($n) {
+	@return calc($n / 1023.98px * 100vw);
+}
+@function vwm($n) {
+	@return calc($n / 767.98px * 100vw);
+}
+
+html {
+	scroll-padding-top: 20px;
+}
+.body {
+	position: relative;
+	overflow-x: clip;
+	min-height: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: var(--font);
+	font-size: 16px;
+	// font-size: calc(var(--index) * 1.5);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--main-color);
+	background-color: var(--bg);
+	&.menu-active {
+		overflow-y: hidden;
+		padding-right: 10px;
+	}
+}
+/* запобігти скачку контента при появі полоси прокрутки
+.body { padding: 0 calc(20px - (100vw - 100%)) 0 0; }*/
+// [class*="__container"] {
+// }
+
+::-webkit-scrollbar {
+	background-color: transparent;
+	width: 7px;
+	// height: 3px;
+	@include m {
+		width: 4px;
+	}
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: var(--main-color);
+}
+* {
+	// колір повзунка колір смужки прокрутки
+	scrollbar-color: var(--main-color) transporent;
+	scrollbar-width: thin;
+}
+.visually-hidden {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	margin: -1px !important;
+	border: 0 !important;
+	padding: 0 !important;
+	white-space: nowrap !important;
+	clip-path: inset(100%) !important;
+	clip: rect(0 0 0 0) !important;
+	overflow: hidden !important;
+}
