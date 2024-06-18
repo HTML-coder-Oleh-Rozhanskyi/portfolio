@@ -35,57 +35,16 @@ window.addEventListener('DOMContentLoaded', () => {
 	};
 
 	resizableSwiper(
-		'(min-width: 10px)',
-		'.preview__swiper',
+		'(min-width: 1px)',
+		'.swiper',
 		{
 			navigation: {
 				nextEl: '.swiper-button-next',
 				prevEl: '.swiper-button-prev',
 			},
-			pagination: {
-				el: '.swiper-pagination',
-				type: 'bullets',
-			},
-			slidesPerGroup: 4,
-			spaceBetween: 15,
+			slidesPerGroup: 1,
 			slidesPerView: 1,
 			centeredSlides: true,
-			breakpoints: {
-				370: {
-					slidesPerView: 1.2,
-					pagination: {
-						el: '.swiper-pagination',
-						type: 'bullets',
-					},
-				},
-				430: {
-					slidesPerView: 1.5,
-					pagination: {
-						el: '.swiper-pagination',
-						type: 'bullets',
-					},
-				},
-				580: {
-					slidesPerGroup: 2,
-					slidesPerView: 2,
-					spaceBetween: 30,
-					centeredSlides: false,
-					pagination: {
-						el: '.swiper-pagination',
-						type: 'fraction',
-					},
-				},
-				767: {
-					centeredSlides: false,
-					slidesPerGroup: 3,
-					slidesPerView: 3,
-				},
-				1023: {
-					centeredSlides: false,
-					slidesPerGroup: 4,
-					slidesPerView: 4,
-				}
-			}
 		},
 	);
 });

@@ -15,11 +15,14 @@ $paddingInline: 32px;
 	--react: #28a9e0;
 	--white: #fff;
 	--black: #000;
-	--transition: 0.2s;
-	--transition-long: 0.4s;
+	--transition: 0.3s;
+	--transition-long: 1s;
 	--index: calc(1vw + 1vh);
 	--font-family: "Ubuntu", sans-serif;
 	--second-family: "IBM Plex Mono", sans-serif;
+	--128: 128px;
+	--64: 64px;
+	--32: 32px;
 }
 
 @mixin xsm {
@@ -59,13 +62,7 @@ $paddingInline: 32px;
 		color: #1d2f30;
 	}
 }
-@mixin hover {
-	@content;
-	&:hover {
-		@media (any-hover) {
-		}
-	}
-}
+
 @mixin container {
 	@content;
 	max-width: calc($container + $paddingInline * 2);
@@ -73,17 +70,16 @@ $paddingInline: 32px;
 	padding-inline: $paddingInline;
 }
 
-/*
 @mixin hover {
 	&::before {
 		@content;
 		content: "";
 		position: absolute;
-		bottom: 0;
+		bottom: -5px;
 		left: 0;
 		width: 100%;
-		height: 1px;
-		background-color: var(--main-color);
+		height: 2px;
+		background-color: var(--brand-1);
 		transform: scale(0);
 		transition: transform var(--transition);
 	}
@@ -93,7 +89,6 @@ $paddingInline: 32px;
 		}
 	}
 }
-*/
 
 @function vwc($n) {
 	@return calc($n / $canvas * 100vw);
@@ -107,7 +102,6 @@ $paddingInline: 32px;
 @function vwm($n) {
 	@return calc($n / 767.98px * 100vw);
 }
-
 html {
 	scroll-padding-top: 20px;
 }
@@ -135,23 +129,33 @@ html {
 // [class*="__container"] {
 // }
 
-::-webkit-scrollbar {
-	background-color: transparent;
-	width: 7px;
-	// height: 3px;
-	@include m {
-		width: 4px;
-	}
-}
-::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	background-color: var(--main-color);
-}
-* {
-	// колір повзунка колір смужки прокрутки
-	scrollbar-color: var(--main-color) transporent;
-	scrollbar-width: thin;
-}
+/* Загальний стиль для всіх веб-кіт браузерів */
+//::-webkit-scrollbar {
+//width: 10px; /* Ширина смужки прокрутки */
+//}
+//::-webkit-scrollbar-track {
+//	background: transparent; /* Колір треку */
+//}
+//
+//::-webkit-scrollbar-thumb {
+//	background-color: var(--bg-2); /* Колір смужки прокрутки */
+//	border-radius: 10px; /* Округлені краї смужки прокрутки */
+//	border: none; /* Простір між смужкою і треком */
+//}
+//::-webkit-scrollbar-thumb:hover {
+//	background-color: var(--bg-2); /* Колір смужки при наведенні */
+//}
+// для firefox
+// .body {
+// scrollbar-width: thin; /* Може бути auto, thin або none */
+// scrollbar-color: #888 #f1f1f1; /* Колір смужки прокрутки та треку */
+// }
+// /* Додатковий стиль для окремих частин смужки */
+// .scrollbar {
+// scrollbar-color: #888 #f1f1f1;
+// scrollbar-width: thin;
+// }
+
 .visually-hidden {
 	position: absolute !important;
 	width: 1px !important;

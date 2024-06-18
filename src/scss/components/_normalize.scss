@@ -29,6 +29,7 @@ html {
 	font-family: inherit;
 	color: inherit;
 	font-size: inherit;
+	border: 0;
 }
 @mixin title {
 	@content;
@@ -37,9 +38,14 @@ html {
 @mixin p {
 	@content;
 	margin-block: 0;
-	&:not(:last-child) {
-		margin-bottom: 24px;
-	}
+}
+@mixin input {
+	@content;
+	font-family: inherit;
+	color: inherit;
+	font-size: inherit;
+	padding: 0;
+	border: 0;
 }
 @media (prefers-reduced-motion: reduce) {
 	* {
@@ -92,13 +98,13 @@ select,
 button {
 	font-family: inherit;
 }
-*/
-/*
 img,
 svg {
 	display: block;
 	max-width: 100%;
 }
+*/
+
 svg *[fill] {
 	fill: currentColor;
 }
@@ -108,4 +114,3 @@ svg *[stroke] {
 svg * {
 	transition-property: fill, stroke;
 }
-*/

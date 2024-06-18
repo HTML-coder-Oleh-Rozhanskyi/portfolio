@@ -1,108 +1,134 @@
 .header {
-	position: fixed;
+	/*position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 100;
 	transition: background-color var(--transition);
+	text-transform: capitalize;
 	&.header--scrolling {
 		background-color: var(--background);
-	}
-	@include m {
+	}*/
+	// .header__container
+	&__container {
+		position: relative;
+		max-width: calc(1664px + $paddingInline * 2);
+		margin: 0 auto;
+		padding-inline: $paddingInline;
+		min-height: 170px;
+		display: flex;
+		align-items: center;
+		column-gap: 64px;
+		// border-bottom: 1px solid var(--grey);
 		&::before {
 			content: "";
 			position: absolute;
-			inset: 0;
-			z-index: 200;
-			background-color: var(--background);
-			transform: translate(100%);
-			transition: transform var(--transition);
-			margin-right: 5px;
-		}
-		.menu-active &::before {
-			transform: translate(0);
+			left: 32px;
+			bottom: 0;
+			width: calc(100% - $paddingInline * 2);
+			height: 1px;
+			background-color: var(--grey);
 		}
 	}
-	&__menu,
-	.menu {
-		@include m {
-			overflow-y: auto;
-			position: fixed;
-			inset: 0;
-			padding: 150px 0 30px;
-			transform: translateX(100%);
-			transition: transform 0.4s linear;
-			background-color: var(--background);
-			&.menu-active {
-				transform: translateX(0);
+	// .header__logo
+	&__logo {
+		display: flex;
+		align-items: center;
+		column-gap: 8px;
+		font-size: 32px;
+	}
+	// .header__logo-span
+	&__logo-span {
+		color: var(--brand-1);
+	}
+
+	// .header__menu-list
+	&__menu-list,
+	.menu-list {
+		@include list;
+		flex-grow: 1;
+		display: flex;
+		justify-content: flex-end;
+		column-gap: var(--32);
+		// .menu-list__link
+		&__link {
+			@include link;
+			@include hover;
+			position: relative;
+			font-size: 24px;
+		}
+		.page-open {
+			color: var(--brand-1);
+			&::before {
+				content: "";
+				position: absolute;
+				bottom: -5px;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background-color: var(--brand-1);
+				transform: scale(1);
+				transition: transform var(--transition);
 			}
 		}
-		&__list {
-			@include m {
-				flex-wrap: nowrap;
-				justify-content: flex-start;
-				align-items: center;
-				flex-direction: column;
-			}
+	}
+
+	// .header__form
+	&__form {
+		flex-basis: 207px;
+		position: relative;
+	}
+	// .header__search-input
+	&__search-input {
+		width: 100%;
+		min-height: 36px;
+		border-radius: 24px;
+		padding-left: 7px;
+		padding-right: 35px;
+		font-family: inherit;
+		font-size: 18px;
+		&::-webkit-search-cancel-button {
+			-webkit-appearance: none;
+			appearance: none;
 		}
-		&__item {
+		&::-moz-search-cancel-button {
+			display: none;
+		}
+		&::-ms-clear {
+			display: none;
+		}
+	}
+	// .header__search-button
+	&__search-button {
+		@include button;
+		padding: 0;
+		border: none;
+		position: absolute;
+		top: calc(50% - 10px);
+		right: 16px;
+		width: 20px;
+		height: 20px;
+		background: url(../img/svg/icon-search.svg) 0 0 no-repeat;
+	}
+
+	// .header__social-list
+	&__social-list,
+	.social-list {
+		@include list;
+		display: flex;
+		column-gap: var(--32);
+		// .social-list__link
+		&__link {
+			@include link;
+			@include hover;
+			position: relative;
 			display: flex;
 			align-items: center;
+			column-gap: 8px;
 		}
-		// menu__item
-		&__link {
-			white-space: nowrap;
-		}
-	}
-}
-
-.burger-btn {
-	display: none;
-	@include m {
-		position: relative;
-		z-index: 200;
-		display: block;
-		width: 30px;
-		height: 20px;
-		background-color: transparent;
-		border: 0;
-		&:hover {
-			@media (any-hover) {
-				cursor: pointer;
-			}
-		}
-		span,
-		&::before,
-		&::after {
-			content: "";
-			position: absolute;
-			right: 0;
-			width: 100%;
-			height: 2px;
-			background-color: #fff;
-			transition: all 0.3s ease 0s;
-		}
-		&::before {
-			top: 0;
-		}
-		&::after {
-			bottom: 0;
-		}
-		span {
-			top: calc(50% - 1px);
-		}
-	}
-	&.menu-active {
-		span {
-			width: 0;
-		}
-		&::before {
-			top: calc(50% - 1px);
-			transform: rotate(-45deg);
-		}
-		&::after {
-			bottom: calc(50% - 1px);
-			transform: rotate(45deg);
+		// .social-list__icon
+		&__icon {
+			color: var(--brand-1);
 		}
 	}
 }
