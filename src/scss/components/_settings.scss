@@ -1,5 +1,5 @@
 $canvas: 1920px;
-$container: 1052px;
+$container: 1420px;
 $paddingInline: 32px;
 
 :root {
@@ -41,7 +41,7 @@ $paddingInline: 32px;
 	}
 }
 @mixin t {
-	@media (max-width: 1023.98px) {
+	@media (max-width: 1180px) {
 		@content;
 	}
 }
@@ -50,6 +50,7 @@ $paddingInline: 32px;
 		@content;
 	}
 }
+
 @mixin focus {
 	@content;
 	&:focus-visible {
@@ -97,7 +98,7 @@ $paddingInline: 32px;
 	@return calc($n / $container * 100vw);
 }
 @function vwt($n) {
-	@return calc($n / 1023.98px * 100vw);
+	@return calc($n / 1180px * 100vw);
 }
 @function vwm($n) {
 	@return calc($n / 767.98px * 100vw);
@@ -121,9 +122,10 @@ html {
 	background-color: var(--bg-1);
 	&.menu-active {
 		overflow-y: hidden;
-		padding-right: 10px;
+		// padding-right: 10px;
 	}
 }
+
 /* запобігти скачку контента при появі полоси прокрутки
 .body { padding: 0 calc(20px - (100vw - 100%)) 0 0; }*/
 // [class*="__container"] {

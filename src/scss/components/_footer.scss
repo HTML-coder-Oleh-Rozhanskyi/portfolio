@@ -9,6 +9,9 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		@include m {
+			padding-inline: 16px;
+		}
 	}
 	// .footer__title
 	&__title {
@@ -30,6 +33,11 @@
 			display: flex;
 			align-items: center;
 			column-gap: 8px;
+			span {
+				@include sm {
+					display: none;
+				}
+			}
 		}
 		// .social-list__icon
 		&__icon {
